@@ -1,0 +1,60 @@
+
+1: Practice data transformation
+source file: Transformation.xlsx, which contains US population survey data
+
+load "Table_1_1790_1860..." table from Transformation.xlsx
+use "query editor" and "transform" tab do following jobs
+remove row "District of Columbia" and "United States"
+practice "move column", "transpose", "reverse" and "extract" function
+remove states with "null" value, and get them back
+replace "null" with 0
+notice the data type of some value might be wrong: should be number but input as "text"
+notice the first row as header or not
+change to correct data type
+unpivot all "year" column & add "year" column
+close & apply query
+load "Summary_by_state_district_.." from Transformation.xlsx
+remove state with "null" value & "D.C."
+notice the data type of some value might be wrong: should be number but input as "text"
+notice the first row as header or not
+notice in "relationships" panel, relationship is detected automatically
+
+2: append & merge tables
+source file: CustomColumn.xlsx, which contains population and growth rate for countries & countries in 7 continents
+
+load each continent from "CustomColumn.xlsx"
+use Query Editor do following jobs
+remove column "flag", "status"
+move "key" to begining
+add custom column "Continent" for each table (using: ="Asian")
+copy Affrica table and rename it AllCountries
+append other contenent table to AllCountries table
+note that "key" column becomes meaningless, remove it
+add an index column starting "1"
+google "Power Query "M" formula": Introduction to Power Query (informally known as "M") Formula Language
+load population table and growth rate table, and cleaning those tables
+notice in "ralationships" panel, relationship is detcted automaticaly
+merge "population" and "growth rate" into one table
+
+3: generate lookup table (relationship among tbales)
+source file: CatlogRequests.xlsx, AllDates.xlsx, and ZipLatLong.xlsx
+
+load "Requests" from CatlogRequest.xlsx, "Months" from AllDates.xlsx, ""zipcode" from "ZipLatLong.xlsx"
+generate lookup table for zipcode and date
+note the data type for zipcode should be "text"
+note there is a row of "null" in "Months" table, remove it
+use: data panel -> query editor -> manage relationships to detect and create relationships
+note: cross filter directions: select "single" for lookup tables
+
+4: create visualization
+source file: the merged table from "append&merge tables" containing population&growth rate for each country and continent
+
+use pop for each continent to create "data table", change font, add title, modify background and aspect
+copy/paste "data table", and change it to "tree map", then paste again, and change to "bar chart"
+use "new visual.." to add "data table" for "country" and "capital", and save this file
+text visual: "table", "matrix", "card", and "multi-row-card", card will do "count" for text, and "sum" for number
+add a "Slicer" to chart to filter the one to be displayed, hold "ctr" to select more than one
+turn on/off the filter of Slicer using "Edt interaction"
+
+source file: the pbix file from "generate lookup table (relationship among tbales)"
+generate a map and add slicers to filter date and state
